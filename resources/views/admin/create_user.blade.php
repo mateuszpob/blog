@@ -31,7 +31,7 @@
                 <div >
                     <label for="password">Password</label>
                     <input value="{{ old('password') }}"
-                        type="text"
+                        type="password"
                         name="password"
                         placeholder="Password" @if(empty($user))required @endif>
                     @if ($errors->has('password'))
