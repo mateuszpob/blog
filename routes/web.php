@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/edit-user/{id}', [UsersController::class, 'getEditUserForm'])->name('users.editform');
     Route::post('/edit-user/{id}', [UsersController::class, 'editUser'])->name('users.edit');
     Route::post('/delete-user/{id}', [UsersController::class, 'deleteUser'])->name('users.delete');
+
+    Route::get('/create-post', [BlogController::class, 'getCreatePostForm'])->name('blog.createpostform');
+    Route::post('/create-post', [BlogController::class, 'createPost'])->name('blog.createpost');
 });

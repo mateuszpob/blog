@@ -7,6 +7,8 @@ use App\User\UserService;
 use App\User\EloquentUserRepository;
 use App\Services\PermissionService;
 use App\Services\SimplePermissionService;
+use App\Post\PostService;
+use App\Post\EloquentPostRepository;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -22,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton(PermissionService::class, function ($app) {
             return new SimplePermissionService(config('auth.permissions'));
+        });
+
+        $this->app->singleton(PostService::class, function ($app) {
+            return new PostService(new EloquentPostRepository());
         });
     }
 

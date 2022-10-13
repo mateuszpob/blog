@@ -7,6 +7,9 @@
         @auth
             <p>Zalogowany</p>
 
+            <a href="{{ route('blog.createpostform') }}">Dodaj post</a>
+            <br>
+            <br>
             <a href="{{ route('users.create') }}">Dodaj użytkownika</a>
             <br>
             <a href="{{ route('get.users') }}">Pokaż użytkowników</a>
