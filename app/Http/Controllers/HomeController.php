@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post\PostService;
 
 class HomeController extends Controller
 {
-    // @TODO
+    private PostService $postService;
+
+    public function __construct(PostService $postService)
+    {
+        $this->postService = $postService;
+    }
+
     public function getHomePage()
     {
-        return view('home');
+        $pageNumber = 1;
+        return view('home', ["posts" => $this->postService->getPage($pageNumber)]);
     }
 }

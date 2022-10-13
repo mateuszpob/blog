@@ -21,4 +21,8 @@ class PostService
     {
         return $this->postRepository->find($id);
     }
+
+    public function getPage(int $pageNumber) {
+        return $this->postRepository->getPage($pageNumber);
+    }
 }

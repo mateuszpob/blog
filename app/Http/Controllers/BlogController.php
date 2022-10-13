@@ -22,7 +22,7 @@ class BlogController extends Controller
 
     public function createPost(CreatePostRequest $request)
     {
-
         $this->postService->createPost($request->validated());
+        return redirect()->route('home');
     }
 }

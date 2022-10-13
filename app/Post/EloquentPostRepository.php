@@ -33,4 +33,9 @@ class EloquentPostRepository implements PostRepository
     {
         return Post::create($postData);
     }
+
+    public function getPage(int $pageNumber)
+    {
+        return Post::paginate(10);
+    }
 }
