@@ -111,8 +111,8 @@ return [
 
     'permissions' => [
         'user' => ['posts.get'],
-        'editor' => ['posts.get', 'posts.create', 'posts.edit', 'posts.delete'],
-        'admin' => ['posts.get', 'posts.create', 'posts.edit', 'posts.delete', 'users.get', 'users.create', 'users.edit', 'users.delete'],
+        'editor' => ['login', 'posts.get', 'posts.create', 'posts.edit', 'posts.delete'],
+        'admin' => ['login', 'posts.get', 'posts.create', 'posts.edit', 'posts.delete', 'users.get', 'users.create', 'users.edit', 'users.delete'],
     ]
 
 ];
