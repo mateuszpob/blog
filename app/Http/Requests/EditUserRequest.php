@@ -24,10 +24,10 @@ class EditUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => '',
+            'name' => 'string|min:3|max:15',
             'email' => 'email',
-            'password' => '',
-            'role' => ''
+            'password' => 'string|min:8',
+            'role' => 'string'
         ];
     }
 }
