@@ -5,7 +5,7 @@ use App\Models\User;
 
 class EloquentUserRepository implements UserRepository
 {
-    public function find(int $id): User
+    public function find(int $id): ?User
     {
         return User::find($id);
     }
@@ -28,7 +28,7 @@ class EloquentUserRepository implements UserRepository
         }
     }
 
-    public function findByEmail(String $email): User
+    public function findByEmail(String $email): ?User
     {
         return User::where("email", $email)->first();
     }

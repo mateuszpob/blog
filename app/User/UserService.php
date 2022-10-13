@@ -36,7 +36,7 @@ class UserService
         return $this->userRepository->find($id);
     }
 
-    public function getUserByMail(String $email): User
+    public function getUserByMail(String $email): ?User
     {
         return $this->userRepository->findByEmail($email);
     }

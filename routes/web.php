@@ -19,6 +19,7 @@ use App\Http\Controllers\BlogController;
 Route::get('/', [HomeController::class, 'getHomePage'])->name('home');
 
 Route::get('/login', [AuthController::class, 'getLoginForm'])->name('login.form');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 Route::get('/register-user', [UsersController::class, 'getRegisterForm'])->name('users.registerform');

@@ -5,9 +5,9 @@ use App\Models\User;
 
 interface UserRepository
 {
-    public function find(int $id): User;
+    public function find(int $id): ?User;
     public function save(User $post): void;
     public function getAll(): array;
     public function delete(int $id);
-    public function findByEmail(String $email): User;
+    public function findByEmail(String $email): ?User;
 }

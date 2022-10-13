@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
-
+use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     /**
@@ -17,7 +17,14 @@ class AuthController extends Controller
         return view('login');
     }
 
-    public function login(LoginRequest $request) {
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('home');
+    }
+
+    public function login(LoginRequest $request)
+    {
         if (auth()->attempt($request->validated())) {
             return redirect()->route('home');
         } else {

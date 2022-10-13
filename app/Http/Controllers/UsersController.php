@@ -51,7 +51,7 @@ class UsersController extends Controller
         $this->authorize('get', User::class);
 
         $users = $this->userService->getUsers();
-        return view('admin.users', ["users" => $users]);
+        return view('panel.users', ["users" => $users]);
     }
     /**
      * Show create form
@@ -61,7 +61,7 @@ class UsersController extends Controller
     public function getUserCreateForm()
     {
         $this->authorize('create', User::class);
-        return view('admin.create_user', ["roles" => array_keys(config('auth.permissions'))]);
+        return view('panel.create_user', ["roles" => array_keys(config('auth.permissions'))]);
     }
 
     public function storeNewUser(StoreUserRequest $request)
@@ -78,7 +78,7 @@ class UsersController extends Controller
         if(empty($user)) {
             abort(404);
         }
-        return view('admin.create_user', ["roles" => array_keys(config('auth.permissions')), "user" => $user]);
+        return view('panel.create_user', ["roles" => array_keys(config('auth.permissions')), "user" => $user]);
     }
 
     public function editUser(EditUserRequest $request, int $id) {
