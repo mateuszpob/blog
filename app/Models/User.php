@@ -21,6 +21,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
+    ];
+
+    protected $appends = [
+        'permissions'
     ];
 
     /**
@@ -41,4 +46,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getPermissionsAttribute()
+    {
+        if(empty($this->role))
+            return [];
+        return config('auth.permissions.' . $this->role);
+    }
 }
