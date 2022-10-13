@@ -2,12 +2,11 @@
 
 namespace App\Services;
 
-use App\User;
+use App\Models\User;
 
-class PermissionService
+interface PermissionService
 {
-    public function permissions(String $roleName)
-    {
-        return config('auth.permissions.' . $roleName);
-    }
+    public function roles(): array;
+    public function permissions(String $roleName): array;
+    public function userCan(User $user, String $rule): bool;
 }

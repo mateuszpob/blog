@@ -12,6 +12,8 @@ use App\Policies\UserPolicy;
 
 class UsersController extends Controller
 {
+    private $userService;
+
     public function __construct(UserService $userService)
     {
         $this->userService = $userService;

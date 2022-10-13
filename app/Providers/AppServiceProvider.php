@@ -5,7 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\User\UserService;
 use App\User\EloquentUserRepository;
-
+use App\Services\PermissionService;
+use App\Services\SimplePermissionService;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -17,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(UserService::class, function ($app) {
             return new UserService(new EloquentUserRepository());
+        });
+
+        $this->app->singleton(PermissionService::class, function ($app) {
+            return new SimplePermissionService(config('auth.permissions'));
         });
     }
 

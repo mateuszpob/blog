@@ -4,38 +4,39 @@ namespace App\Policies;
 
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-
+use App\Services\PermissionService;
 class UserPolicy
 {
     use HandlesAuthorization;
 
+    private PermissionService $permissionServics;
     /**
      * Create a new policy instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(PermissionService $permissionServics)
     {
-        //
+        $this->permissionServics = $permissionServics;
     }
 
     public function get(User $user): bool
     {
-        return in_array('users.get', $user->permissions, true);
+        return $this->permissionServics->userCan($user, 'users.get');
     }
 
     public function create(User $user): bool
     {
-        return in_array('users.create', $user->permissions, true);
+        return $this->permissionServics->userCan($user, 'users.create');
     }
 
     public function edit(User $user): bool
     {
-        return in_array('users.edit', $user->permissions, true);
+        return $this->permissionServics->userCan($user, 'users.edit');
     }
 
     public function delete(User $user): bool
     {
-        return in_array('users.delete', $user->permissions, true);
+        return $this->permissionServics->userCan($user, 'users.delete');
     }
 }

@@ -24,10 +24,6 @@ class User extends Authenticatable
         'role'
     ];
 
-    protected $appends = [
-        'permissions'
-    ];
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -46,11 +42,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function getPermissionsAttribute()
-    {
-        if(empty($this->role))
-            return [];
-        return config('auth.permissions.' . $this->role);
-    }
 }
