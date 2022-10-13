@@ -35,10 +35,10 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function register(User $user, RegisterUserRequest $request)
+    public function register(RegisterUserRequest $request)
     {
-        $this->userService->createUser($request->validated());
-        return response("OK", 201);
+        $this->userService->registerUser($request->validated());
+        return redirect()->route('login.form');
     }
 
 

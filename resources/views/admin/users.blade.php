@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        <h1>Urzytkownicy</h1>
+        <h1>Użytkownicy</h1>
         <ul>
         @foreach ($users as $user)
             <li>{{ str_pad($user->email, 32) }}; {{ str_pad($user->name, 32) }}; <strong>{{ str_pad($user->role, 32) }}</strong>

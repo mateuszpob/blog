@@ -110,7 +110,7 @@ return [
 
 
     'permissions' => [
-        'user' => ['posts.get'],
+        'user' => [],
         'editor' => ['login', 'posts.get', 'posts.create', 'posts.edit', 'posts.delete'],
         'admin' => ['login', 'posts.get', 'posts.create', 'posts.edit', 'posts.delete', 'users.get', 'users.create', 'users.edit', 'users.delete'],
     ]

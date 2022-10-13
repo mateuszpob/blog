@@ -2,7 +2,9 @@
 namespace App\User;
 
 use App\Models\User;
+use Illuminate\Support\Arr;
 use Ramsey\Uuid\Type\Integer;
+use App\Events\UserRegistered;
 
 class UserService
 {
@@ -11,6 +13,7 @@ class UserService
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
+        $this->defaultRoleName = "user";
     }
 
     public function createUser(array $attributes): User
@@ -18,6 +21,13 @@ class UserService
         $user = new User();
         $user = $this->setUserAttributes($user, $attributes);
         $this->userRepository->save($user);
+        return $user;
+    }
+
+    public function registerUser(array $attributes): User
+    {
+        $user = $this->createUser($attributes);
+        event(new UserRegistered($user));
         return $user;
     }
 
@@ -47,6 +57,12 @@ class UserService
         $user = $this->setUserAttributes($user, $attributes);
         $this->userRepository->save($user);
         return $user;
+    }
+
+    public function setDefaultRole(User $user)
+    {
+        $user->role = $this->defaultRoleName;
+        $this->userRepository->save($user);
     }
 
     private function setUserAttributes(User $user, array $attributes): User
