@@ -1,0 +1,6 @@
+1. Etapy projktu:
+    1. Stworzenie repozytorium i serwisu obsługującego użytkowników,
+    2. Stworzenie serwisu i całej obsługi ograniczeń dostępu ,
+    3. Stworzenie repozytorium i serwisu obsługującego bloga,
+    4. Dodanie możliwości resetu hasła,
+2. Dopracowałbym paginację, tak żeby nie była związana z Eloquentem
