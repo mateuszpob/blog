@@ -17,6 +17,6 @@ class HomeController extends Controller
     public function getHomePage()
     {
         $pageNumber = 1;
-        return view('home', ["posts" => $this->postService->getPage($pageNumber)]);
+        return view(home_template(), ["posts" => $this->postService->getPage($pageNumber)]);
     }
 }
