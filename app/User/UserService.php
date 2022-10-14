@@ -76,12 +76,9 @@ class UserService
     public function processPasswordResetAction($password, $token): void
     {
         $user = $this->userRepository->findByToken(md5($token));
-
-
         if(empty($user)) {
             return;
         }
-
         $user->password = bcrypt($password);
         $this->userRepository->save($user);
     }
