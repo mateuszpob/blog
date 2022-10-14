@@ -36,6 +36,6 @@ class EloquentPostRepository implements PostRepository
 
     public function getPage(int $pageNumber)
     {
-        return Post::paginate(10);
+        return Post::orderBy('id', 'desc')->paginate(10);
     }
 }

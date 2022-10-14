@@ -7,10 +7,10 @@
     <body>
         <main>
             <div>
-                <h1>Login</h1>
+                <h1>Zresetuj hasło</h1>
 
                 <div>
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('pass.reset') }}">
                         @csrf
                         <div >
                             <label for="email">Email</label>
@@ -22,20 +22,10 @@
                                 <span >{{ $errors->first('email') }}</span>
                             @endif
                         </div>
-                        <div >
-                            <label for="password">Password</label>
-                            <input value="{{ old('password') }}"
-                                type="password"
-                                name="password"
-                                placeholder="Password" required>
-                            @if ($errors->has('password'))
-                                <span >{{ $errors->first('username') }}</span>
-                            @endif
-                        </div>
 
-                        <button type="submit">Login</button>
+                        <button type="submit">Reset</button>
 
-                        <a href="{{ route('pass.resetform') }}">Przypomnij hasło</a>
+                        <a href="{{ route('login.form') }}">Zaloguj</a>
                     </form>
                 </div>
             </div>

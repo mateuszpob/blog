@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton(PermissionService::class, function ($app) {
-            return new SimplePermissionService(config('auth.permissions'));
+            return new SimplePermissionService(config('auth.permissions'), new UserService(new EloquentUserRepository()));
         });
 
         $this->app->singleton(PostService::class, function ($app) {

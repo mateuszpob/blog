@@ -32,4 +32,9 @@ class EloquentUserRepository implements UserRepository
     {
         return User::where("email", $email)->first();
     }
+
+    public function findByToken(string $token): ?User
+    {
+        return User::where("token", $token)->first();
+    }
 }

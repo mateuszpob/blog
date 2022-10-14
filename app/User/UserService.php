@@ -65,6 +65,27 @@ class UserService
         $this->userRepository->save($user);
     }
 
+    public function generateToken(User $user): string
+    {
+        $token = $this->tokenGenerator();
+        $user->token = md5($token);
+        $this->userRepository->save($user);
+        return $token;
+    }
+
+    public function processPasswordResetAction($password, $token): void
+    {
+        $user = $this->userRepository->findByToken(md5($token));
+
+
+        if(empty($user)) {
+            return;
+        }
+
+        $user->password = bcrypt($password);
+        $this->userRepository->save($user);
+    }
+
     private function setUserAttributes(User $user, array $attributes): User
     {
         $user->name = $attributes["name"];
@@ -76,4 +97,11 @@ class UserService
         $user->role = $attributes["role"] ?? null;
         return $user;
     }
+
+    private function tokenGenerator(int $length = 10): string
+    {
+        return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
+    }
+
+
 }

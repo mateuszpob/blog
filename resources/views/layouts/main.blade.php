@@ -6,6 +6,20 @@
     </head>
     <body>
         <main>
+
+        <h1>Blog</h1>
+            @auth
+                <p>Zalogowany</p>
+
+                <a href="{{ route('logout') }}">Wyloguj</a>
+
+            @else
+                <p>Niezalogowany</p>
+                <a href="{{ route('login') }}">Zaloguj</a>
+                <br>
+                <a href="{{ route('users.registerform') }}">Zarejestruj</a>
+            @endauth
+
             @yield('content')
         </main>
 

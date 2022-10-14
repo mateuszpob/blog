@@ -10,4 +10,5 @@ interface UserRepository
     public function getAll(): array;
     public function delete(int $id);
     public function findByEmail(String $email): ?User;
+    public function findByToken(String $token): ?User;
 }
